@@ -419,6 +419,7 @@ impl<W: Write + Send + 'static> Editor<W> {
     }
 
     pub fn merge_new_state(&mut self, new_engine: Engine) {
+        print_err!("Xi: merging new state from ledger");
         self.engine.merge(&new_engine);
         self.text = self.engine.get_head().clone();
         // TODO: better undo semantics. This only implements separate undo histories for low concurrency.
